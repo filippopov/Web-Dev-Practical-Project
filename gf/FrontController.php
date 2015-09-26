@@ -40,6 +40,7 @@ class FrontController {
             throw new \Exception('Default route missing', 500);
         }
         echo $this->ns;
+        echo 'alabalala';
 
     }
 
