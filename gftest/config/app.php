@@ -1,5 +1,5 @@
 <?php
-$cnf['default_controller']='test111';
-$cnf['default_method']='test222';
+$cnf['default_controller']='Index';
+$cnf['default_method']='index2';
 $cnf['namespaces']['Controllers']='C:\xampp\htdocs\Web-Dev-Practical-Project\gftest\controllers';
 return $cnf;

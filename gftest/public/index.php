@@ -10,7 +10,7 @@ $app = \GF\App::getInstance();
 //$config = \GF\Config::getInstance();
 //echo $app->getConfig()->app;
 
-
+$app->setRouter('RPCRouter');
 $app->run();
 
 
