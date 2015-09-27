@@ -10,7 +10,10 @@ $app = \GF\App::getInstance();
 //$config = \GF\Config::getInstance();
 //echo $app->getConfig()->app;
 
-$app->setRouter('RPCRouter');
+$db = new \GF\DB\SimpleDB();
+
+//$a = $db->prepare('SELECT * FROM users WHERE id=?')->execute(array(1))->fetchAllAssoc();
+var_dump($a);
 $app->run();
 
 

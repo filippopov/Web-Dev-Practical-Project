@@ -12,6 +12,7 @@ class App {
     private static $_instance = null;
     private $_config = null;
     private $router =null;
+    private $_dbConnections=array();
 
     /**
      *
@@ -75,7 +76,25 @@ class App {
         $this->_frontController->dispatch();
     }
 
+    public function getDBConnection($connection='default'){
+        if(!$connection){
+            throw new \Exception('No connection identifier provider',500);
+        }
+        if($this->_dbConnections[$connection]){
+            return $this->_dbConnections[$connection];
+        }
 
+        $_cnf=$this->getConfig()->database;
+
+        if(!$_cnf[$connection]){
+            throw new \Exception('No valid connection identificator is provided',500);
+        }
+
+        $dbh = new \PDO($_cnf[$connection]['connection_uri'],$_cnf[$connection]['username'], $_cnf[$connection]['password'], $_cnf[$connection]['pdo_options']);
+
+        $this->_dbConnections[$connection] = $dbh;
+        return $dbh;
+    }
 
     public static function getInstance(){
         if(self::$_instance==null){
